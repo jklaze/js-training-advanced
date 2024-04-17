@@ -1,0 +1,39 @@
+body{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr 1fr 1fr;
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+
+.element{
+    width: 130px;
+    height: 130px;
+}
+
+.sky{
+    background-color: rgb(0, 128, 255);
+}
+
+.grass{
+    background-color: rgb(0, 134, 31);
+}
+
+.Darkgrass{
+    background-color: rgb(34, 131, 58);
+}
+
+
+
+.pikachu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
