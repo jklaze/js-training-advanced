@@ -9,26 +9,10 @@ let Matrix = [
     [3,4,3,3,3,3,3],
 ];
 
-function game(){
-
-    let lastRow = Matrix[Matrix.length-1]
-    
-    enemyPosition >= 6 ? prewEnemyPosition = null : prewEnemyPosition = enemyPosition + 1;
-    if(enemyPosition < 0) enemyPosition = 6
-
-    lastRow.splice(prewEnemyPosition,1,3)
-    lastRow.splice(enemyPosition,1,5)
-    console.log(lastRow);
-
-    enemyPosition = enemyPosition - 1
-
-
-    BoardGame()
-}
 
 function BoardGame(){
     container.innerHTML = ""
-
+    
     Matrix.forEach((row, rowIndex) => {
         row.forEach((column, columnIndex) => {
             let element = document.createElement("div");
@@ -83,7 +67,22 @@ function grass(element) {
     element.appendChild(img)
 }
 
+function game(){
 
+    let lastRow = Matrix[Matrix.length-1]
+    
+    enemyPosition >= 6 ? prewEnemyPosition = null : prewEnemyPosition = enemyPosition + 1;
+    if(enemyPosition < 0) enemyPosition = 6
+
+    lastRow.splice(prewEnemyPosition,1,3)
+    lastRow.splice(enemyPosition,1,5)
+    console.log(lastRow);
+
+    enemyPosition = enemyPosition - 1
+
+
+    BoardGame()
+}
 
 setInterval(game, 1000);
 
