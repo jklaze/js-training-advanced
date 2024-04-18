@@ -7,7 +7,7 @@ body{
 .container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr 80px 1fr;
     width: auto;
     height: auto;
     margin: auto;
@@ -35,5 +35,17 @@ body{
 .pikachu{
     display: flex;
     justify-content: center;
+    align-items: center;
+    transform: rotate(5deg);
+}
+
+.a{
+    background-color: transparent;
+}
+
+.b{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
     align-items: center;
 }
