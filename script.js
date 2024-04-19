@@ -1,13 +1,16 @@
-let container = document.querySelector(".container");
-var enemyPosition = 6;
-var prewEnemyPosition
-
 let Matrix = [
     [1,1,1,1,1,1,1],
     [6,6,6,6,6,6,6],
-    [2,2,2,2,2,2,2],
     [3,4,3,3,3,3,3],
 ];
+
+let container = document.querySelector(".container");
+var enemyPosition = 6;
+var prewEnemyPosition;
+//
+var JumpTimer = 1;
+let flag = false
+
 
 
 function BoardGame(){
@@ -18,7 +21,7 @@ function BoardGame(){
             let element = document.createElement("div");
             element.classList.add("element");
 
-            characters(column,element)
+            characters(column,element,rowIndex)
             ambience(column, element)
 
             container.appendChild(element); 
@@ -43,17 +46,17 @@ function enemy(element){
     element.appendChild(img)
 }
 
-function characters(column,element){
-    if(column === 4 ) Pikachu(element)
+function characters(column,element,rowIndex){
+    if(column === 4 ) Pikachu(element,rowIndex)
     if(column === 5 ) enemy(element)
 }
 
-function Pikachu(element) {
+function Pikachu(element,rowIndex) {
     let img = document.createElement("img");
-    element.classList.add("Darkgrass");
+    rowIndex === 1 ? element.classList.add("sky") : element.classList.add("Darkgrass");
     img.src = "images/pikachu.gif"
-    img.style.width = "130px"
-    img.style.height = "110px"
+    img.style.width = "100px"
+    img.style.height = "100px"
     element.appendChild(img)
 }
 
@@ -67,8 +70,21 @@ function grass(element) {
     element.appendChild(img)
 }
 
-function game(){
+function jump() {
+window.addEventListener("keydown", (event) => {
+    if(event.code = "space") {
+        flag = true;
+        //
+        let PikachuRowPosition = Matrix[Matrix.length-1];
+        PikachuRowPosition.splice(1,1,3)
+        //
+        let PikachuRowUpperPosition = Matrix[Matrix.length-2];
+        PikachuRowUpperPosition.splice(1,1,4)
 
+    } 
+  });
+}
+function game(){
     let lastRow = Matrix[Matrix.length-1]
     
     enemyPosition >= 6 ? prewEnemyPosition = null : prewEnemyPosition = enemyPosition + 1;
@@ -76,23 +92,32 @@ function game(){
 
     lastRow.splice(prewEnemyPosition,1,3)
     lastRow.splice(enemyPosition,1,5)
-    console.log(lastRow);
 
     enemyPosition = enemyPosition - 1
+
+    if(flag === true) JumpTimer --;
+    if (JumpTimer <= 0) {
+        jumpdown()
+        JumpTimer = 3
+        flag === true
+    }
 
 
     BoardGame()
 }
 
-setInterval(game, 1000);
+function jumpdown(){
+    let PikachuRowPosition = Matrix[Matrix.length-1];
+    PikachuRowPosition.splice(1,1,4)
+    //
+    let PikachuRowUpperPosition = Matrix[Matrix.length-2];
+    PikachuRowUpperPosition.splice(1,1,3)
+}
 
-window.addEventListener("keydown", (event) => {
-         if(event.key = "ArrowUp") {
-            let PikachuRowPosition = Matrix[Matrix.length-1]
-            let PikachuColumnPosition = PikachuRowPosition[1]
+function GameOver(){
+    //
+}
 
-            let upperrow = Matrix[Matrix.length-1]
-            let uppercolumn = upperrow[1]
-            console.log(uppercolumn)
-         }
-  });
+setInterval(game, 600);
+
+jump()
