@@ -14,6 +14,8 @@ body{
 }
 
 .element{
+    display: flex;
+    align-items: end;
     width: 130px;
     height: 130px;
 }
@@ -30,15 +32,11 @@ body{
     background-color: rgb(34, 131, 58);
 }
 
-
-
-
-
-.a{
-    background-color: transparent;
+.enemy{
+    margin: auto;
 }
 
-.b{
+.GrassAligned{
     display: flex;
     flex-direction: column;
     justify-content: end;
