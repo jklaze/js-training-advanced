@@ -2,8 +2,8 @@ let container = document.querySelector(".container");
 var enemyPosition = 6;
 var prewEnemyPosition;
 //
-var JumpingTiming = 0.020;
-flag = false
+var JumpingTiming = 0.001;
+let flag = false
 
 let Matrix = [
     [1,1,1,1,1,1,1],
